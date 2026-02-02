@@ -83,7 +83,7 @@ public class EventService implements EventServiceInterface {
             }
             // Boolean fields need care (checking if it was actually sent),
             // but for simplicity we assume typical setter usage:
-            existing.setPaid(updatedEvent.isPaid());
+//            existing.setPaid(updatedEvent.isPaid());
 
             return eventRepository.save(existing);
         }

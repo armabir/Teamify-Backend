@@ -16,13 +16,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "events")
 public class Event {
 
     @Id
-    private String id;
-
-    @Indexed(unique = true)
+    private String id = java.util.UUID.randomUUID().toString();
     private String title;
 
     private String shortDescription;
@@ -31,7 +28,6 @@ public class Event {
     private String location;
     private String coverUrl;
     private LocalDate createdAt;
-    private boolean isPaid;
 
     private List<String> teamNames;
 }

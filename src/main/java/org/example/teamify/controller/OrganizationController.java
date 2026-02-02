@@ -1,5 +1,6 @@
 package org.example.teamify.controller;
 
+import org.example.teamify.model.Event;
 import org.example.teamify.model.Organizer;
 import org.example.teamify.service.OrganizationService;
 import org.springframework.web.bind.annotation.*;
@@ -55,8 +56,8 @@ public class OrganizationController {
 
     // ---------- Event Management Endpoints ----------
 
-    @PostMapping("/api/organizers/{organizerId}/events/{eventId}")
-    public Organizer addEventToOrganizer(@PathVariable String organizerId, @PathVariable String eventId) {
-        return organizationService.addEventToOrganizer(organizerId, eventId);
+    @PostMapping("/api/organizers/{organizerId}/events/")
+    public Organizer addEventToOrganizer(@PathVariable String organizerId, @RequestBody Event event ) {
+        return organizationService.addEventToOrganizer(organizerId, event);
     }
 }

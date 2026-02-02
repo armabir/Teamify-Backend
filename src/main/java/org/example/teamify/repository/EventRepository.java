@@ -14,5 +14,4 @@ public interface EventRepository extends MongoRepository<Event, String> {
 
     // useful filters
     List<Event> findByEventType(String eventType);
-    List<Event> findByIsPaid(boolean isPaid);
 }

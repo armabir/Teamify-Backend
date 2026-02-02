@@ -1,5 +1,6 @@
 package org.example.teamify.repository;
 
+import org.example.teamify.model.Event;
 import org.example.teamify.model.Organizer;
 import java.util.List;
 
@@ -9,6 +10,6 @@ public interface OrganizationServiceInterface {
     Organizer getOrganizerByEmail(String email);
     List<Organizer> getAllOrganizers();
     Organizer updateOrganizer(String id, Organizer updatedOrganizer);
-    Organizer addEventToOrganizer(String organizerId, String eventId);
+    Organizer addEventToOrganizer(String organizerId, Event event);
     void deleteOrganizer(String id);
 }

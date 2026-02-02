@@ -31,5 +31,5 @@ public class Organizer {
     private String websiteUrl;
     private LocalDate createdAt;
 
-    private List<String> eventIds;
+    private List<Event> eventList;
 }

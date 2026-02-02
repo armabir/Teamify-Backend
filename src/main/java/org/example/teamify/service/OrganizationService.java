@@ -1,5 +1,6 @@
 package org.example.teamify.service;
 
+import org.example.teamify.model.Event;
 import org.example.teamify.model.Organizer;
 import org.example.teamify.repository.OrganizationServiceInterface;
 import org.example.teamify.repository.OrganizerRepository;
@@ -33,8 +34,8 @@ public class OrganizationService implements OrganizationServiceInterface {
 
         organizer.setCreatedAt(LocalDate.now());
 
-        if (organizer.getEventIds() == null) {
-            organizer.setEventIds(new ArrayList<>());
+        if (organizer.getEventList() == null) {
+            organizer.setEventList(new ArrayList<>());
         }
 
         return organizerRepository.save(organizer);
@@ -104,18 +105,18 @@ public class OrganizationService implements OrganizationServiceInterface {
     // ---------- Event Linking Logic ----------
 
     @Override
-    public Organizer addEventToOrganizer(String organizerId, String eventId) {
+    public Organizer addEventToOrganizer(String organizerId, Event event) {
         Organizer organizer = getOrganizerById(organizerId);
 
         if (organizer != null) {
             // Initialize list if it doesn't exist
-            if (organizer.getEventIds() == null) {
-                organizer.setEventIds(new ArrayList<>());
+            if (organizer.getEventList() == null) {
+                organizer.setEventList(new ArrayList<>());
             }
 
             // Prevent duplicate event IDs
-            if (!organizer.getEventIds().contains(eventId)) {
-                organizer.getEventIds().add(eventId);
+            if (!organizer.getEventList().contains(event)) {
+                organizer.getEventList().add(event);
                 return organizerRepository.save(organizer);
             }
         }
